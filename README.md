@@ -1,8 +1,8 @@
 # Maestro
 
-<mark>**_NOTE: I am no longer actively developing** Maestro/RMVideo**. I have made this repo available for anyone in the
+<mark>NOTE: I am no longer actively developing **Maestro/RMVideo**. I have made this repo available for anyone in the
 neuroscience community that continues to use the application and might wish to fork the repo to adapt or modify the
-program for their own purposes._**</mark>
+program for their own purposes.</mark>
 
 **Maestro** is a Windows® application developed in Stephen G. Lisberger's laboratory at Duke University to conduct a 
 wide variety of behavioral and neurophysiological experiments focusing on smooth pursuit eye movements, the vestibular 
@@ -37,22 +37,54 @@ An [online user's guide](https://sites.google.com/a/srscicomp.com/maestro/home) 
 program, detailed information about system requirements and supported hardware, usage instructions, a complete version 
 history, and a downloads page where you can get the latest release. The online guide also covers RMVideo, which is 
 Maestro's workhorse visual stimulus platform (running on a separate Linux workstation); JMWork, a Java application that
-reads and edits Maestro data files (no longer supported); and several Maestro-related Matlab utilities.
+reads and edits Maestro data files; and several Maestro-related Matlab utilities.
 
 ## Installation
-TODO
-
-### Related Matlab Utilities
-TODO
-
-## Building/Packaging
-TODO
+Installing **Maestro** itself is relatively easy using the self-extracting installer that is available for 
+[download](https://sites.google.com/a/srscicomp.com/maestro/downloads) from the online guide. But there's a lot more
+to it than installing software to get a Maestro experiment rig up and running with RMVideo as the stimulus platform.
+See the [Installation chapter](https://sites.google.com/a/srscicomp.com/maestro/installation) in the online guide for 
+full details on deploying **Maestro** to a Windows10/RTX64 workstation and **RMVideo** to a Linux 14.x or 18.x machine.
 
 ## License
-**Maestro** was created by [Scott Ruffner](mailto:sruffner@srscicomp.com). It is licensed under the terms of the MIT license.
+**Maestro**, **RMVideo**, and the related Matlab tools were created by [Scott Ruffner](mailto:sruffner@srscicomp.com). All of the software is
+free to use under the terms of the MIT license.
 
 ## Credits
-**Maestro** was developed with funding provided by the Stephen G. Lisberger laboratory in the Department of
-Neurobiology at Duke University. It evolved from Dr. Lisberger's UNIX-based **Cntrlx** application.
+**Maestro** was developed with funding provided by the Stephen G. Lisberger laboratory in the Department of Neurobiology
+at Duke University. It evolved from Dr. Lisberger's UNIX-based **Cntrlx** application.
+
+## Repository Contents
+- `maestro4.x`: Root folder containing all source code and resource files needed to build Maestro 4.x. Does NOT include
+Visual Studio project build settings.
+  - `cxdriver`: Source code for building cxdriver.rtss, the hardware controller for Maestro that runs a seperate RTX64
+  process.
+  - `gui`: Source code for building maestro.exe, the Maestro GUI in which user defines and runs experiments.
+  - `installer`: Files needed to build the self-extracting installer for **Maestro**.
+  - `maestroExp`: Sample Maestro experiment documents (used for testing).
+- `rmvideo`: Root folder containing all source code and other files needed to build **RMVideo**.
+  - `forUbuntu14.04`: For building **RMVideo** to run on Lubuntu 14.04. Includes a `Makefile`. The `versions` folder 
+  contains "readmes" for the most recent and past versions, indicating **Maestro** version compatibility. See [online 
+  guide for more information](https://sites.google.com/a/srscicomp.com/maestro/installation/how-to-install-rmvideo) on 
+  building the `rmvideo` executable and configuring the Linux workstation appropriately.
+  - `forUbuntu18.04`: For building **RMVideo** to run on Lubuntu 18.04. This version has been tested successfully
+  but is not in use in any labs, AFAIK.
+  - `doc`: Contains some sample xorg.conf files and `msimcmds.txt`, a file containing a simulated **Maestro** command
+  sequence. It is used to test **RMVideo** without connecting to **Maestro**.
+  - `media_bup`: Contains some sample image and video files used to test **RMVideo**.
+- `utilties_for_matlab`:
+  - `miscellaneous`, `rmvplaid`: Matlab scripts implementing a number of **Maestro/RMVideo**-related tools. All of these
+  are [described](https://sites.google.com/a/srscicomp.com/maestro/data-analysis/supported-matlab-tools/other-functions)
+  in the online guide, but none are actively used AFAIK.
+  - `plexon`: Matlab files implementing the `plexmon()` Matlab application, which monitors the event stream of the Plexon
+  Multiacquisition Processor (MAP) and passes timestamp data to a 'trial handler' function. See the plexmon.m file for
+  more details. The Plexon MAP has been superceded by the Omniplex system, and AFAIK `plexmon()` is no longer used.
+  - `readcxdata`: C source code files for building the Matlab MEX functions 
+  [_readcxdata()_](https://sites.google.com/a/srscicomp.com/maestro/data-analysis/supported-matlab-tools/readcxdata) and
+  [_editcxdata()_](https://sites.google.com/a/srscicomp.com/maestro/data-analysis/supported-matlab-tools/editcxdata). 
+  The former is used to load a **Maestro** data file's contents into Matlab for further analysis, while the latter can
+  be used to clear or edit analysis actions that are appended to the data file without altering the original recorded
+  data. See the `releases` directory for readmes on previous versions (the MEX functions were updated each time the
+  Maestro data file format changed), as well as instructions for building the MEX functions.
 
 

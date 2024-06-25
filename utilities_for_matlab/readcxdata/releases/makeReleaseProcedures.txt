@@ -1,9 +1,18 @@
 Procedures for building MEX functions READCXDATA/EDITCXDATA for various supported OS platforms
 
-Last Updated: 11may2021
+Last Updated: 25jun2024
 
 Scott Ruffner
 
+NOTE: Much of the information here is out of date, but I'll leave it just in case. Basically, you want to build the
+MEX functions from the Matlab command line on the machine on which you'll run the MEX functions. The essential
+instructions are: (1) Start Matlab and make the READCXDATA source code directory the current directory. (2) Build the
+MEX functions with:
+   mex readcxdata.c pertmgr.c noisyem.c
+   mex editcxdata.c
+
+
+********************** OLD ********************************
 Below are general instructions on building the Maestro-related MEX functions READCXDATA() and EDITCXDATA(). READCXDATA()
 is an essential tool for Maestro users, as it reads and parses a Maestro data file and stores its content in a Matlab
 structure so that users can develop scripts to automate analysis of large numbers of data files. EDITCXDATA() is used

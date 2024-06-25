@@ -55,13 +55,13 @@ free to use under the terms of the MIT license.
 at Duke University. It evolved from Dr. Lisberger's UNIX-based **Cntrlx** application.
 
 ## Repository Contents
-- `maestro4.x`: Root folder containing all source code and resource files needed to build Maestro 4.x. Does NOT include
-Visual Studio project build settings.
-  - `cxdriver`: Source code for building cxdriver.rtss, the hardware controller for Maestro that runs a seperate RTX64
-  process.
-  - `gui`: Source code for building maestro.exe, the Maestro GUI in which user defines and runs experiments.
+- `maestro4.x`: Root folder containing all source code and resource files needed to build **Maestro** 4.x.
+  - `cxdriver`: Source code for building `cxdriver.rtss`, the hardware controller for **Maestro** that runs a separate 
+  RTX64 process.
+  - `gui`: Source code for building `maestro.exe`, the **Maestro** GUI in which user defines and runs experiments.
   - `installer`: Files needed to build the self-extracting installer for **Maestro**.
-  - `maestroExp`: Sample Maestro experiment documents (used for testing).
+  - `maestroExp`: Sample **Maestro** experiment documents (used for testing).
+  - `visual_studio` : Project templates for building `maestro.exe` and `cxdriver.rtss` in Visual Studio 2017.
 - `rmvideo`: Root folder containing all source code and other files needed to build **RMVideo**.
   - `forUbuntu14.04`: For building **RMVideo** to run on Lubuntu 14.04. Includes a `Makefile`. The `versions` folder 
   contains "readmes" for the most recent and past versions, indicating **Maestro** version compatibility. See [online 
